@@ -2,7 +2,6 @@
 import cv2
 from gaze_tracking import GazeTracking
 from time import sleep
-# from FireBaseHelper import DB_Helper
 
 gaze = GazeTracking()
 webcam = cv2.VideoCapture(0)
@@ -17,9 +16,6 @@ start = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
 
 startstring = ""
 
-# Laver en kolonne i databasen
-# DB_Helper().INSERTWL(start)
-# DB_Helper().INSERTDATA(startstring)
 sleep(1)
 
 
@@ -53,7 +49,6 @@ while True:
             k = round(len(alfa) / 2)
             sentence = alfa[k:]
             #print(sentence)
-            # DB_Helper().INSERTWL(sentence)
             T += 1
             sleep(0.8)
 
@@ -61,7 +56,6 @@ while True:
             k = round(len(sentence) / 2)
             sentence = sentence[k:]
             #print(sentence)
-            # DB_Helper().INSERTWL(sentence)
             # sleep(0.8)
 
     # Kigger brugeren til vesntre, gøres følgende.
@@ -71,7 +65,6 @@ while True:
             k = round(len(alfa) / 2)
             sentence = alfa[:k]
             #print(sentence)
-            # DB_Helper().INSERTWL(sentence)
             T += 1
             sleep(0.8)
 
@@ -79,7 +72,6 @@ while True:
             k = round(len(sentence) / 2)
             sentence = sentence[:k]
             #print(sentence)
-            # DB_Helper().INSERTWL(sentence)
             sleep(0.8)
 
     # Er der kun et element i listen, betyder det at brugeren har indsnævret sig til det bogstav de gerne ville have.
@@ -89,25 +81,21 @@ while True:
             #print("Hej")
             if len(liste) > 0:
                 liste.pop()
-                # DB_Helper().INSERTDATA(convert_to_string(liste))
 
         # Vælger man mellemrum, indsætter den et mellemrum.
         elif sentence == ["-"]:
             liste.append(" ")
             liste.append(sentence)
-            # DB_Helper().INSERTDATA(convert_to_string(liste))
 
         # Hvis det enten ikke er mellemrum eller slet, tager den bare bogstavet og appender til listen.
         else:
             #print("Før liste: " + str(liste))
             liste.append(sentence)
            # print("Efter liste: " + str(liste))
-           #  DB_Helper().INSERTDATA(convert_to_string(liste))
             sleep(0.8)
 
         sentence = alfa
         T = 0
-        # DB_Helper().INSERTWL(sentence)
 
     if T == 0:
         text = str(alfa)
