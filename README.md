@@ -1,7 +1,11 @@
 Installer: https://www.anaconda.com/download
+
 For at installere de libraries der bliver brugt kør:
+
 pip install -r requirements.txt 
+
 ELLER 
+
 pip install dlib
 pip install opencv_python
 pip install numpy
